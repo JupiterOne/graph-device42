@@ -34,6 +34,7 @@
   "peerDependencies": {
     "@jupiterone/integration-sdk-core": "^8.22.0"
   },
+  "dependencies": {},
   "devDependencies": {
     "@jupiterone/integration-sdk-core": "^8.22.0",
     "@jupiterone/integration-sdk-dev-tools": "^8.22.0",
