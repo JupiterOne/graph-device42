@@ -10,12 +10,11 @@ if (process.env.LOAD_ENV) {
     path: path.join(__dirname, '../.env'),
   });
 }
-const DEFAULT_CLIENT_ID = 'dummy-acme-client-id';
-const DEFAULT_CLIENT_SECRET = 'dummy-acme-client-secret';
 
 export const integrationConfig: IntegrationConfig = {
-  clientId: process.env.CLIENT_ID || DEFAULT_CLIENT_ID,
-  clientSecret: process.env.CLIENT_SECRET || DEFAULT_CLIENT_SECRET,
+  username: process.env.USERNAME || 'test',
+  password: process.env.PASSWORD || 'test',
+  baseUrl: process.env.BASE_URL || 'https://swaggerdemo.device42.com',
 };
 
 export function buildStepTestConfigForStep(stepId: string): StepTestConfig {
