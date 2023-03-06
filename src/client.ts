@@ -19,8 +19,8 @@ export type ResourceIteratee<T> = (each: T) => Promise<void> | void;
 export class APIClient {
   constructor(readonly config: IntegrationConfig) {}
 
-  public verifyAuthentication() {
-    return;
+  public async verifyAuthentication() {
+    return Promise.resolve();
   }
 
   public async iterateEndUsers(iteratee: ResourceIteratee<Device42EndUser>) {
