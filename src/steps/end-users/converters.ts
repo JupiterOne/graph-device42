@@ -15,7 +15,7 @@ export function createEndUserEntity(endUser: Device42EndUser) {
         contact: endUser.contact || undefined,
         domain: endUser.domain || undefined,
         name: endUser.name,
-        adUsername: endUser.adusername || undefined,
+        activeDirectoryUsername: endUser.adusername || undefined,
         username: endUser.adusername || undefined,
         notes: undefined,
       },

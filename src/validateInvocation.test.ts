@@ -21,7 +21,7 @@ describe('#validateInvocation', () => {
     });
 
     await expect(validateInvocation(executionContext)).rejects.toThrow(
-      'Config requires all of {username, password, baseUrl}',
+      'Config requires all of {device42Username, password, baseUrl}',
     );
   });
 
@@ -68,7 +68,7 @@ describe('#validateInvocation', () => {
         const executionContext = createMockExecutionContext({
           instanceConfig: {
             baseUrl: 'https://swaggerdemo.device42.com',
-            username: 'not-a-real-username',
+            device42Username: 'not-a-real-username',
             password: 'not-a-real-password',
           },
         });

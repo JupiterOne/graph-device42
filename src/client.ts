@@ -71,10 +71,16 @@ export class APIClient {
   private async makeRequest<T>(
     opts: Pick<GaxiosOptions, 'url' | 'params' | 'method' | 'body'>,
   ) {
+    const auth = Buffer.from(
+      `${this.config.device42Username}:${this.config.password}`,
+    ).toString('base64');
     return await request<T>({
       url: opts.url,
       baseUrl: this.config.baseUrl,
       params: opts.params,
+      headers: {
+        Authorization: `Basic ${auth}`,
+      },
       retryConfig: {
         retry: 3,
         retryDelay: 3000,

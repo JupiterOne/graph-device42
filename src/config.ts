@@ -24,7 +24,7 @@ export const instanceConfigFields: IntegrationInstanceConfigFieldMap = {
   baseUrl: {
     type: 'string',
   },
-  username: {
+  device42Username: {
     type: 'string',
   },
   password: {
@@ -38,7 +38,7 @@ export const instanceConfigFields: IntegrationInstanceConfigFieldMap = {
  * same properties defined by `instanceConfigFields`.
  */
 export interface IntegrationConfig extends IntegrationInstanceConfig {
-  username: string;
+  device42Username: string;
   password: string;
   baseUrl: string;
 }
@@ -48,9 +48,9 @@ export async function validateInvocation(
 ) {
   const { config } = context.instance;
 
-  if (!config.username || !config.password || !config.baseUrl) {
+  if (!config.device42Username || !config.password || !config.baseUrl) {
     throw new IntegrationValidationError(
-      'Config requires all of {username, password, baseUrl}',
+      'Config requires all of {device42Username, password, baseUrl}',
     );
   }
 

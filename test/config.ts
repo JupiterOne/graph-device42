@@ -12,7 +12,7 @@ if (process.env.LOAD_ENV) {
 }
 
 export const integrationConfig: IntegrationConfig = {
-  username: process.env.USERNAME || 'test',
+  device42Username: process.env.USERNAME || 'test',
   password: process.env.PASSWORD || 'test',
   baseUrl: process.env.BASE_URL || 'https://swaggerdemo.device42.com',
 };
