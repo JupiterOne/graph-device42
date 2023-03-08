@@ -10,17 +10,6 @@ import { IntegrationConfig } from '../../config';
 import { Entities, Keys, Relationships, Steps } from '../constants';
 import { createEndUserEntity } from './converters';
 
-export const endUsersSteps: IntegrationStep<IntegrationConfig>[] = [
-  {
-    id: Steps.END_USERS,
-    name: 'Fetch End Users',
-    entities: [Entities.END_USER],
-    relationships: [Relationships.ACCOUNT_HAS_USER],
-    dependsOn: [Steps.ACCOUNT],
-    executionHandler: fetchEndUsers,
-  },
-];
-
 async function fetchEndUsers({
   instance,
   jobState,
@@ -43,3 +32,14 @@ async function fetchEndUsers({
     );
   });
 }
+
+export const endUsersSteps: IntegrationStep<IntegrationConfig>[] = [
+  {
+    id: Steps.END_USERS,
+    name: 'Fetch End Users',
+    entities: [Entities.END_USER],
+    relationships: [Relationships.ACCOUNT_HAS_USER],
+    dependsOn: [Steps.ACCOUNT],
+    executionHandler: fetchEndUsers,
+  },
+];

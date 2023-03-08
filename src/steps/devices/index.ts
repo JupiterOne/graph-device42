@@ -11,17 +11,6 @@ import { Device42Device } from '../../types';
 import { Entities, Keys, Relationships, Steps } from '../constants';
 import { createDeviceEntity } from './converter';
 
-export const devicesSteps: IntegrationStep<IntegrationConfig>[] = [
-  {
-    id: Steps.DEVICES,
-    name: 'Fetch Devices',
-    entities: [Entities.DEVICE],
-    relationships: [Relationships.ACCOUNT_HAS_DEVICE],
-    dependsOn: [Steps.ACCOUNT],
-    executionHandler: fetchDevices,
-  },
-];
-
 async function fetchDevices({
   instance,
   jobState,
@@ -44,3 +33,14 @@ async function fetchDevices({
     );
   });
 }
+
+export const devicesSteps: IntegrationStep<IntegrationConfig>[] = [
+  {
+    id: Steps.DEVICES,
+    name: 'Fetch Devices',
+    entities: [Entities.DEVICE],
+    relationships: [Relationships.ACCOUNT_HAS_DEVICE],
+    dependsOn: [Steps.ACCOUNT],
+    executionHandler: fetchDevices,
+  },
+];

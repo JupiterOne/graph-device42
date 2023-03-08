@@ -77,7 +77,7 @@ describe('#validateInvocation', () => {
         // tests validate that invalid configurations throw an error
         // with an appropriate and expected message.
         await expect(validateInvocation(executionContext)).rejects.toThrow(
-          'Provider authentication failed at https://swaggerdemo.device42.comhttps://swaggerdemo.device42.com/api/1.0/endusers/: 500 Internal Server Error',
+          'Provider authentication failed at https://swaggerdemo.device42.comhttps://swaggerdemo.device42.com/api/1.0/endusers/: 403 Insufficient permissions',
         );
       });
     });

@@ -6,6 +6,14 @@ import { IntegrationConfig } from '../../config';
 import { Entities, Keys, Steps } from '../constants';
 import { createAccountEntity } from './converters';
 
+async function fetchAccount({
+  instance,
+  jobState,
+}: IntegrationStepExecutionContext<IntegrationConfig>) {
+  const accountEntity = await jobState.addEntity(createAccountEntity(instance));
+  await jobState.setData(Keys.ACCOUNT_ENTITY, accountEntity);
+}
+
 export const accountSteps: IntegrationStep<IntegrationConfig>[] = [
   {
     id: Steps.ACCOUNT,
@@ -17,11 +25,3 @@ export const accountSteps: IntegrationStep<IntegrationConfig>[] = [
     executionHandler: fetchAccount,
   },
 ];
-
-async function fetchAccount({
-  instance,
-  jobState,
-}: IntegrationStepExecutionContext<IntegrationConfig>) {
-  const accountEntity = await jobState.addEntity(createAccountEntity(instance));
-  await jobState.setData(Keys.ACCOUNT_ENTITY, accountEntity);
-}

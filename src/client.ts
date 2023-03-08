@@ -105,8 +105,8 @@ export class APIClient {
         const msg = err.response?.data?.msg;
         if (msg === "You don't have permissions to access this resource.") {
           throw new IntegrationProviderAuthenticationError({
-            status,
-            statusText,
+            status: 403,
+            statusText: 'Insufficient permissions',
             endpoint,
           });
         }
