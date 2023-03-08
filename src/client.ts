@@ -99,6 +99,15 @@ export class APIClient {
       });
     } catch (err) {
       if (err instanceof GaxiosError) {
+        const msg = err.response?.data?.msg;
+        if (msg === "You don't have permissions to access this resource.") {
+          throw new IntegrationProviderAuthenticationError({
+            status: err.response.status,
+            statusText: err.response.statusText,
+            endpoint: err.config.baseUrl + err.config.url,
+          });
+        }
+
         if (err.response.status === 401) {
           throw new IntegrationProviderAuthenticationError({
             status: err.response.status,
