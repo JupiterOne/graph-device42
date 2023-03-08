@@ -97,8 +97,18 @@ The following entities are created:
 
 | Resources | Entity `_type`     | Entity `_class`  |
 | --------- | ------------------ | ---------------- |
+| Account   | `device42_account` | `Account`        |
 | Device    | `device42_device`  | `Host`, `Device` |
 | End Users | `device42_enduser` | `User`           |
+
+### Relationships
+
+The following relationships are created:
+
+| Source Entity `_type` | Relationship `_class` | Target Entity `_type` |
+| --------------------- | --------------------- | --------------------- |
+| `device42_account`    | **HAS**               | `device42_device`     |
+| `device42_account`    | **HAS**               | `device42_enduser`    |
 
 <!--
 ********************************************************************************
