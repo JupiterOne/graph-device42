@@ -1,4 +1,10 @@
-import { GaxiosOptions, request } from 'gaxios';
+import {
+  IntegrationError,
+  IntegrationProviderAPIError,
+  IntegrationProviderAuthenticationError,
+  IntegrationProviderAuthorizationError,
+} from '@jupiterone/integration-sdk-core';
+import { Gaxios, GaxiosError, GaxiosOptions, request } from 'gaxios';
 import { IntegrationConfig } from './config';
 import {
   Device42Device,
@@ -20,7 +26,9 @@ export class APIClient {
   constructor(readonly config: IntegrationConfig) {}
 
   public async verifyAuthentication() {
-    return Promise.resolve();
+    await this.makeRequest({
+      url: '/api/1.0/endusers/',
+    });
   }
 
   public async iterateEndUsers(iteratee: ResourceIteratee<Device42EndUser>) {
@@ -74,20 +82,46 @@ export class APIClient {
     const auth = Buffer.from(
       `${this.config.device42Username}:${this.config.password}`,
     ).toString('base64');
-    return await request<T>({
-      url: opts.url,
-      baseUrl: this.config.baseUrl,
-      params: opts.params,
-      headers: {
-        Authorization: `Basic ${auth}`,
-      },
-      retryConfig: {
-        retry: 3,
-        retryDelay: 3000,
-      },
-      method: opts.method,
-      body: opts.body,
-    });
+    try {
+      return await request<T>({
+        url: opts.url,
+        baseUrl: this.config.baseUrl,
+        params: opts.params,
+        headers: {
+          Authorization: `Basic ${auth}`,
+        },
+        retryConfig: {
+          retry: 3,
+          retryDelay: 3000,
+        },
+        method: opts.method,
+        body: opts.body,
+      });
+    } catch (err) {
+      if (err instanceof GaxiosError) {
+        if (err.response.status === 401) {
+          throw new IntegrationProviderAuthenticationError({
+            status: err.response.status,
+            statusText: err.response.statusText,
+            endpoint: err.config.baseUrl + err.config.url,
+          });
+        } else if (err.response.status == 403) {
+          throw new IntegrationProviderAuthorizationError({
+            status: err.response.status,
+            statusText: err.response.statusText,
+            endpoint: err.config.baseUrl + err.config.url,
+          });
+        } else {
+          throw new IntegrationProviderAPIError({
+            status: err.response.status,
+            statusText: err.response.statusText,
+            endpoint: err.config.baseUrl + err.config.url,
+          });
+        }
+      } else {
+        throw err;
+      }
+    }
   }
 }
 
