@@ -1,10 +1,9 @@
 import {
-  IntegrationError,
   IntegrationProviderAPIError,
   IntegrationProviderAuthenticationError,
   IntegrationProviderAuthorizationError,
 } from '@jupiterone/integration-sdk-core';
-import { Gaxios, GaxiosError, GaxiosOptions, request } from 'gaxios';
+import { GaxiosError, GaxiosOptions, request } from 'gaxios';
 import { IntegrationConfig } from './config';
 import {
   Device42Device,
@@ -99,32 +98,36 @@ export class APIClient {
       });
     } catch (err) {
       if (err instanceof GaxiosError) {
+        const status = err.response?.status ?? 404;
+        const statusText = err.response?.statusText ?? 'No Response Received';
+        const endpoint =
+          this.config.baseUrl + (err.response?.config?.url ?? '');
         const msg = err.response?.data?.msg;
         if (msg === "You don't have permissions to access this resource.") {
           throw new IntegrationProviderAuthenticationError({
-            status: err.response.status,
-            statusText: err.response.statusText,
-            endpoint: err.config.baseUrl + err.config.url,
+            status,
+            statusText,
+            endpoint,
           });
         }
 
-        if (err.response.status === 401) {
+        if (err.response?.status === 401) {
           throw new IntegrationProviderAuthenticationError({
-            status: err.response.status,
-            statusText: err.response.statusText,
-            endpoint: err.config.baseUrl + err.config.url,
+            status,
+            statusText,
+            endpoint,
           });
-        } else if (err.response.status == 403) {
+        } else if (err.response?.status == 403) {
           throw new IntegrationProviderAuthorizationError({
-            status: err.response.status,
-            statusText: err.response.statusText,
-            endpoint: err.config.baseUrl + err.config.url,
+            status,
+            statusText,
+            endpoint,
           });
         } else {
           throw new IntegrationProviderAPIError({
-            status: err.response.status,
-            statusText: err.response.statusText,
-            endpoint: err.config.baseUrl + err.config.url,
+            status,
+            statusText,
+            endpoint,
           });
         }
       } else {
