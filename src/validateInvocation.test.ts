@@ -6,6 +6,7 @@ import { integrationConfig } from '../test/config';
 import { setupProjectRecording } from '../test/recording';
 import { IntegrationConfig, validateInvocation } from './config';
 
+jest.setTimeout(100_000);
 describe('#validateInvocation', () => {
   let recording: Recording;
 
