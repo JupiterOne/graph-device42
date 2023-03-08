@@ -1,4 +1,10 @@
+import { GaxiosOptions, request } from 'gaxios';
 import { IntegrationConfig } from './config';
+import {
+  Device42Device,
+  Device42DeviceResponse,
+  Device42EndUser,
+} from './types';
 
 export type ResourceIteratee<T> = (each: T) => Promise<void> | void;
 
@@ -13,8 +19,75 @@ export type ResourceIteratee<T> = (each: T) => Promise<void> | void;
 export class APIClient {
   constructor(readonly config: IntegrationConfig) {}
 
-  public verifyAuthentication() {
-    return;
+  public async verifyAuthentication() {
+    return Promise.resolve();
+  }
+
+  public async iterateEndUsers(iteratee: ResourceIteratee<Device42EndUser>) {
+    let finished = false;
+    let offset = 0;
+    do {
+      const response = await this.makeRequest<{ values: Device42EndUser[] }>({
+        url: '/api/1.0/endusers/',
+        params: {
+          offset,
+          limit: 100,
+        },
+      });
+
+      for (const v of response.data.values) {
+        await iteratee(v);
+      }
+      if (response.data.values.length === 0) {
+        finished = true;
+      }
+
+      offset += response.data.values.length;
+    } while (!finished);
+  }
+
+  public async iterateDevices(iteratee: ResourceIteratee<Device42Device>) {
+    const limit = 500;
+    let total = 0;
+    let offset = 0;
+    do {
+      const response = await this.makeRequest<Device42DeviceResponse>({
+        url: '/api/1.0/devices/all/',
+        params: {
+          limit: limit,
+          offset: offset,
+          blankasnull: 'yes',
+        },
+      });
+
+      for (const v of response.data.Devices) {
+        await iteratee(v);
+      }
+      offset += response.data.Devices.length;
+      total = response.data.total_count;
+    } while (offset < total);
+  }
+
+  private async makeRequest<T>(
+    opts: Pick<GaxiosOptions, 'url' | 'params' | 'method' | 'body'>,
+  ) {
+    const auth = Buffer.from(
+      `${this.config.device42Username}:${this.config.password}`,
+    ).toString('base64');
+    return await request<T>({
+      url: opts.url,
+      baseUrl: this.config.baseUrl,
+      params: opts.params,
+      headers: {
+        Authorization: `Basic ${auth}`,
+      },
+      retryConfig: {
+        retry: 3,
+        retryDelay: 3000,
+      },
+      method: opts.method,
+      body: opts.body,
+    });
   }
 }
 
