@@ -1,21 +1,13 @@
-# {{provider}}
+# Device42
 
 ## Integration Benefits
 
-TODO: Iterate the benefits of ingesting data from the provider into JupiterOne.
-Consider the following examples:
-
-- Visualize {{provider}} services, teams, and users in the JupiterOne graph.
-- Map {{provider}} users to employees in your JupiterOne account.
-- Monitor changes to {{provider}} users using JupiterOne alerts.
+- Visualize Device42 users and devices in the JupiterOne graph.
+- Monitor changes to devices using JupiterOne alerts.
 
 ## How it Works
 
-TODO: Iterate significant activities the integration enables. Consider the
-following examples:
-
-- JupiterOne periodically fetches services, teams, and users from {{provider}}
-  to update the graph.
+- JupiterOne periodically devices and users to update the graph.
 - Write JupiterOne queries to review and monitor updates to the graph, or
   leverage existing queries.
 - Configure alerts to take action when JupiterOne graph changes, or leverage
@@ -23,13 +15,7 @@ following examples:
 
 ## Prerequisites
 
-TODO: Iterate requirements for setting up the integration. Consider the
-following examples:
-
-- {{provider}} supports the OAuth2 Client Credential flow. You must have a
-  Administrator user account.
-- JupiterOne requires a REST API key. You need permission to create a user in
-  {{provider}} that is used to obtain the API key.
+- A Device42 instance and permissions to create new users.
 - You must have permission in JupiterOne to install new integrations.
 
 ## Support
@@ -39,44 +25,43 @@ If you need help with this integration, contact
 
 ## How to Use This Integration
 
-### In {{provider}}
+### In Device42
 
-TODO: List specific actions that must be taken in the provider. Remove this
-section when there are no actions to take in the provider.
-
-1. [Generate a REST API key](https://example.com/docs/generating-api-keys)
+1. In the Device42 Console, navigate to Tools > Administrators.
+2. Click **Add Local Admin** in the top right corner.
+3. Create a username and password for the new user. Save these for use in the
+   integration configuration.
+4. Click **Save** in the bottom right corner.
+5. On the next screen under **Permissions**, make sure the user is Active. It's
+   recommended to disable **Staff status** and **Superuser status** to ensure
+   the user can only access the API.
+6. Under Groups add **System Generated Read Only**.
+7. Click the **Save** button in the bottom right corner.
 
 ### In JupiterOne
 
-TODO: List specific actions that the user must take in JupiterOne. Many of the
-following steps will be reusable; take care to be sure they remain accurate.
-
 1. From the top navigation of the J1 Search homepage, select **Integrations**.
-2. Scroll down to **{{provider}}** and click it.
+2. Scroll down to **Device42** and click it.
 3. Click **Add Configuration** and configure the following settings:
 
-- Enter the account name by which you want to identify this {{provider}} account
-  in JupiterOne. Select **Tag with Account Name** to store this value in
+- Enter the account name by which you want to identify this Device42 account in
+  JupiterOne. Select **Tag with Account Name** to store this value in
   `tag.AccountName` of the ingested assets.
 - Enter a description to help your team identify the integration.
 - Select a polling interval that is sufficient for your monitoring requirements.
   You can leave this as `DISABLED` and manually execute the integration.
-- {{additional provider-specific settings}} Enter the {{provider}} API key
-  generated for use by JupiterOne.
+- Enter the **username** and **password** for the Device42 account you want to
+  configure.
+- Enter the hostname for your Device42 instance.
 
 4. Click **Create Configuration** after you have entered all the values.
 
 ## How to Uninstall
 
-TODO: List specific actions that must be taken to uninstall the integration.
-Many of the following steps will be reusable; take care to be sure they remain
-accurate.
-
 1. From the top navigation of the J1 Search homepage, select **Integrations**.
-2. Scroll down to **{{provider}}** and click it.
-3. Identify and click the **integration to delete**.
-4. Click the trash can icon.
-5. Click **Remove** to delete the integration.
+2. Scroll down to **Device42** and click it.
+3. Identify the integration instance you want to delete and click it.
+4. Click the **Delete** button to delete the integration.
 
 <!-- {J1_DOCUMENTATION_MARKER_START} -->
 <!--

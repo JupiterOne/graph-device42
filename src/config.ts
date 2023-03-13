@@ -54,6 +54,18 @@ export async function validateInvocation(
     );
   }
 
+  if (config.disableTlsVerification) {
+    process.env.NODE_TLS_REJECT_UNAUTHORIZED = '0';
+    context.logger.warn(
+      `Disabling TLS certificate verification based on .env.  If possible, please install valid TLS certificates into Device42 server.`,
+    );
+    context.logger.publishEvent({
+      name: 'disable_tls_verify',
+      description:
+        'Disabling TLS certificate verification. NOT RECOMMENDED: If possible, please install valid TLS certificates into Device42 server.',
+    });
+  }
+
   const apiClient = createAPIClient(config);
   await apiClient.verifyAuthentication();
 }

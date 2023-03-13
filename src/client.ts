@@ -33,6 +33,7 @@ export class APIClient {
   public async iterateEndUsers(iteratee: ResourceIteratee<Device42EndUser>) {
     let finished = false;
     let offset = 0;
+    let lastSeenUserId: number | undefined = undefined;
     do {
       const response = await this.makeRequest<{ values: Device42EndUser[] }>({
         url: '/api/1.0/endusers/',
@@ -42,14 +43,20 @@ export class APIClient {
         },
       });
 
-      for (const v of response.data.values) {
-        await iteratee(v);
-      }
-      if (response.data.values.length === 0) {
+      if (
+        response.data.values.length === 0 ||
+        response.data.values[response.data.values.length - 1].id ===
+          lastSeenUserId
+      ) {
         finished = true;
+      } else {
+        for (const v of response.data.values) {
+          await iteratee(v);
+        }
+        lastSeenUserId =
+          response.data.values[response.data.values.length - 1].id;
+        offset += response.data.values.length;
       }
-
-      offset += response.data.values.length;
     } while (!finished);
   }
 
