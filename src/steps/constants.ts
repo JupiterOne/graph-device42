@@ -20,7 +20,7 @@ export const Entities: Record<
     _class: ['Account'],
   },
   END_USER: {
-    resourceName: 'End Users',
+    resourceName: 'End User',
     _type: 'device42_enduser',
     _class: ['User'],
   },

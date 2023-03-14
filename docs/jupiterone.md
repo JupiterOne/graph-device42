@@ -84,7 +84,7 @@ The following entities are created:
 | --------- | ------------------ | ---------------- |
 | Account   | `device42_account` | `Account`        |
 | Device    | `device42_device`  | `Host`, `Device` |
-| End Users | `device42_enduser` | `User`           |
+| End User  | `device42_enduser` | `User`           |
 
 ### Relationships
 

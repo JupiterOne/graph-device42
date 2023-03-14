@@ -7,3 +7,9 @@ and this project adheres to
 [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ## [Unreleased]
+
+### 0.1.0 - 2022-03-14
+
+- Added `device42_account`, `device42_enduser`, and `device42_device` entities.
+- Added `HAS` relationship from `device42_account` to `device42_enduser` and
+  `device42_device`.
