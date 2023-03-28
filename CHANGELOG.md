@@ -8,6 +8,10 @@ and this project adheres to
 
 ## [Unreleased]
 
+### 0.1.1 - 2022-03-27
+
+- throw an `IntegrationError` from the client instead of generic error.
+
 ### 0.1.0 - 2022-03-14
 
 - Added `device42_account`, `device42_enduser`, and `device42_device` entities.

@@ -1,4 +1,5 @@
 import {
+  IntegrationError,
   IntegrationProviderAPIError,
   IntegrationProviderAuthenticationError,
   IntegrationProviderAuthorizationError,
@@ -138,7 +139,10 @@ export class APIClient {
           });
         }
       } else {
-        throw err;
+        throw new IntegrationError({
+          message: err.message,
+          code: (err as Error).name,
+        });
       }
     }
   }
