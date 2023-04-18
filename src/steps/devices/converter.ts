@@ -27,6 +27,7 @@ export function createDeviceEntity(device: Device42Device) {
         model: device.hw_model,
         deviceId: device.uuid,
         hostname: null,
+        switch: device.is_it_switch === 'yes',
       },
     },
   });
