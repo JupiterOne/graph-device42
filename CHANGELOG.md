@@ -8,7 +8,7 @@ and this project adheres to
 
 ## [Unreleased]
 
-### 0.5.0 - 2023-04-19
+### 0.5.0 - 2023-04-27
 
 - Add `switch` property to `device42_device`
 
