@@ -1,3 +1,20 @@
+# v0.6.0 (Wed May 24 2023)
+
+#### 🚀 Enhancement
+
+- INT-8401: fixing deprecated setOutPut and conforming to int-template. [#13](https://github.com/JupiterOne/graph-device42/pull/13) ([@sl45082](https://github.com/sl45082))
+
+#### 🐛 Bug Fix
+
+- Update integration-deployment.yml [#11](https://github.com/JupiterOne/graph-device42/pull/11) ([@Nick-NCSU](https://github.com/Nick-NCSU))
+
+#### Authors: 2
+
+- bob bisantz ([@sl45082](https://github.com/sl45082))
+- Nick Thompson ([@Nick-NCSU](https://github.com/Nick-NCSU))
+
+---
+
 ### 0.5.0 - 2023-04-27
 
 - Add `switch` property to `device42_device`
