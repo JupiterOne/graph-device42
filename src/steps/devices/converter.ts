@@ -5,7 +5,18 @@ import {
 import { Device42Device } from '../../types';
 import { Entities } from '../constants';
 
+// https://api.device42.com/#Devices_getDevicesAll
 export function createDeviceEntity(device: Device42Device) {
+  /**
+   * The agent_last_checkin_date refers to the last time the Device42 agent
+   * checked in with the server, whereas the last_updated timestamp indicates
+   * the last time when Device42 last updated the device's information through
+   * a scan or discovery process. Because not all Device42 devices are going
+   * to have an agent installed, agent_last_checkin_date will not always
+   * be available, whereas updated_on will. Therefore, we will prefer the
+   * agent_last_checkin_date, but falling back to the last_updated is also
+   * acceptable.
+   */
   const lastSeenOn = parseTimePropertyValue(
     device.agent_last_checkin_date ?? device.last_updated,
   );
