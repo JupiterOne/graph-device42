@@ -2,6 +2,7 @@ import { executeStepWithDependencies } from '@jupiterone/integration-sdk-testing
 import { buildStepTestConfigForStep } from '../../../test/config';
 import { Recording, setupProjectRecording } from '../../../test/recording';
 import { Steps } from '../constants';
+import { omit } from 'lodash';
 
 // pagination takes some time for this test
 jest.setTimeout(100_000);
@@ -20,4 +21,7 @@ test('fetch-devices', async () => {
   const stepConfig = buildStepTestConfigForStep(Steps.DEVICES);
   const stepResult = await executeStepWithDependencies(stepConfig);
   expect(stepResult.collectedEntities.length).toBeGreaterThan(0);
+  expect(
+    stepResult.collectedEntities.map((e) => omit(e, ['_rawData'])),
+  ).toMatchSnapshot();
 });
