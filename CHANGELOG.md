@@ -1,3 +1,15 @@
+# v0.6.1 (Mon Jun 12 2023)
+
+#### 🐛 Bug Fix
+
+- DEVICE-113 - Add lastSeenOn to Devices [#14](https://github.com/JupiterOne/graph-device42/pull/14) ([@mknoedel](https://github.com/mknoedel))
+
+#### Authors: 1
+
+- Michael Knoedel ([@mknoedel](https://github.com/mknoedel))
+
+---
+
 # v0.6.0 (Wed May 24 2023)
 
 #### 🚀 Enhancement
