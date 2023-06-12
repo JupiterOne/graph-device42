@@ -1,8 +1,14 @@
-import { createIntegrationEntity } from '@jupiterone/integration-sdk-core';
+import {
+  createIntegrationEntity,
+  parseTimePropertyValue,
+} from '@jupiterone/integration-sdk-core';
 import { Device42Device } from '../../types';
 import { Entities } from '../constants';
 
 export function createDeviceEntity(device: Device42Device) {
+  const lastSeenOn = parseTimePropertyValue(
+    device.agent_last_checkin_date ?? device.last_updated,
+  );
   return createIntegrationEntity({
     entityData: {
       source: device,
@@ -28,6 +34,7 @@ export function createDeviceEntity(device: Device42Device) {
         deviceId: device.uuid,
         hostname: null,
         switch: device.is_it_switch === 'yes',
+        lastSeenOn,
       },
     },
   });
