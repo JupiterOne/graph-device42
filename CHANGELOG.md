@@ -1,3 +1,20 @@
+# v1.0.0 (Tue Aug 22 2023)
+
+#### 💥 Breaking Change
+
+- Update to Node 18 [#16](https://github.com/JupiterOne/graph-device42/pull/16) ([@zemberdotnet](https://github.com/zemberdotnet))
+
+#### 🐛 Bug Fix
+
+- Adding package and publish workflow [#15](https://github.com/JupiterOne/graph-device42/pull/15) ([@jmountifield](https://github.com/jmountifield))
+
+#### Authors: 2
+
+- James Mountifield ([@jmountifield](https://github.com/jmountifield))
+- Matthew Zember ([@zemberdotnet](https://github.com/zemberdotnet))
+
+---
+
 # v0.6.1 (Mon Jun 12 2023)
 
 #### 🐛 Bug Fix
