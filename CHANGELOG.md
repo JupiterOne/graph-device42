@@ -1,3 +1,15 @@
+# v0.7.0 (Tue Aug 29 2023)
+
+#### 🚀 Enhancement
+
+- update config fields to allow control over ssl [#17](https://github.com/JupiterOne/graph-device42/pull/17) ([@zemberdotnet](https://github.com/zemberdotnet))
+
+#### Authors: 1
+
+- Matthew Zember ([@zemberdotnet](https://github.com/zemberdotnet))
+
+---
+
 # v1.0.0 (Tue Aug 22 2023)
 
 #### 💥 Breaking Change
