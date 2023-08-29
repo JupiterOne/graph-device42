@@ -31,6 +31,11 @@ export const instanceConfigFields: IntegrationInstanceConfigFieldMap = {
     type: 'string',
     mask: true,
   },
+  disableTlsVerification: {
+    type: 'boolean',
+    mask: false,
+    optional: true,
+  },
 };
 
 /**
@@ -41,6 +46,7 @@ export interface IntegrationConfig extends IntegrationInstanceConfig {
   device42Username: string;
   password: string;
   baseUrl: string;
+  disableTlsVerification?: boolean;
 }
 
 export async function validateInvocation(
