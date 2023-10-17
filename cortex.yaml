@@ -1,0 +1,12 @@
+openapi: 3.0.1
+info:
+  title: '@jupiterone/graph-device42'
+  description: A graph conversion tool for Device42
+  x-cortex-git:
+    github:
+      repository: JupiterOne/graph-device42
+  x-cortex-owners:
+    - type: group
+      name: JupiterOne/integrations
+  x-cortex-service-groups: tier-4
+  x-cortex-tag: '@jupiterone/graph-device42'
