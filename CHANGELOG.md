@@ -1,3 +1,20 @@
+# v0.6.2 (Fri Dec 08 2023)
+
+#### 🐛 Bug Fix
+
+- Add more retries to noresponse errors [#19](https://github.com/JupiterOne/graph-device42/pull/19) (gonzaloavalosribas@Gonzalos-MacBook-Pro.local)
+
+#### ⚠️ Pushed to `main`
+
+- Fix x-cortex-service-groups where tier-4 was set incorrectly ([@jablonnc](https://github.com/jablonnc))
+
+#### Authors: 2
+
+- Gonzalo Avalos Ribas ([@Gonzalo-Avalos-Ribas](https://github.com/Gonzalo-Avalos-Ribas))
+- Noah Jablonski ([@jablonnc](https://github.com/jablonnc))
+
+---
+
 # v0.7.0 (Tue Aug 29 2023)
 
 #### 🚀 Enhancement
