@@ -100,6 +100,7 @@ export class APIClient {
         retryConfig: {
           retry: 3,
           retryDelay: 3000,
+          noResponseRetries: 5, //ETIMEDOUT, ENOTFOUND, ECONNRESET
         },
         method: opts.method,
         body: opts.body,
