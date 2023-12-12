@@ -1,3 +1,15 @@
+# v1.1.2 (Tue Dec 12 2023)
+
+#### 🐛 Bug Fix
+
+- Increase device42 limit [#20](https://github.com/JupiterOne/graph-device42/pull/20) (gonzaloavalosribas@Gonzalos-MacBook-Pro.local)
+
+#### Authors: 1
+
+- Gonzalo Avalos Ribas ([@Gonzalo-Avalos-Ribas](https://github.com/Gonzalo-Avalos-Ribas))
+
+---
+
 # v0.6.2 (Fri Dec 08 2023)
 
 #### 🐛 Bug Fix
