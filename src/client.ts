@@ -62,7 +62,7 @@ export class APIClient {
   }
 
   public async iterateDevices(iteratee: ResourceIteratee<Device42Device>) {
-    const limit = 500;
+    const limit = 1000;
     let total = 0;
     let offset = 0;
     do {
