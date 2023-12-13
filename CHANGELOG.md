@@ -1,3 +1,15 @@
+# v1.1.3 (Wed Dec 13 2023)
+
+#### 🐛 Bug Fix
+
+- Retry calls - Print the error we retry [#21](https://github.com/JupiterOne/graph-device42/pull/21) (gonzaloavalosribas@Gonzalos-MacBook-Pro.local)
+
+#### Authors: 1
+
+- Gonzalo Avalos Ribas ([@Gonzalo-Avalos-Ribas](https://github.com/Gonzalo-Avalos-Ribas))
+
+---
+
 # v1.1.2 (Tue Dec 12 2023)
 
 #### 🐛 Bug Fix
