@@ -14,6 +14,7 @@ import { createDeviceEntity } from './converter';
 async function fetchDevices({
   instance,
   jobState,
+  logger,
 }: IntegrationStepExecutionContext<IntegrationConfig>) {
   const client = createAPIClient(instance.config);
   const accountEntity = await jobState.getData<Entity>(Keys.ACCOUNT_ENTITY);
@@ -31,7 +32,7 @@ async function fetchDevices({
         _class: Relationships.ACCOUNT_HAS_DEVICE._class,
       }),
     );
-  });
+  }, logger);
 }
 
 export const devicesSteps: IntegrationStep<IntegrationConfig>[] = [

@@ -1,5 +1,6 @@
 import {
   IntegrationError,
+  IntegrationLogger,
   IntegrationProviderAPIError,
   IntegrationProviderAuthenticationError,
   IntegrationProviderAuthorizationError,
@@ -61,19 +62,25 @@ export class APIClient {
     } while (!finished);
   }
 
-  public async iterateDevices(iteratee: ResourceIteratee<Device42Device>) {
+  public async iterateDevices(
+    iteratee: ResourceIteratee<Device42Device>,
+    logger: IntegrationLogger,
+  ) {
     const limit = 1000;
     let total = 0;
     let offset = 0;
     do {
-      const response = await this.makeRequest<Device42DeviceResponse>({
-        url: '/api/1.0/devices/all/',
-        params: {
-          limit: limit,
-          offset: offset,
-          blankasnull: 'yes',
+      const response = await this.makeRequest<Device42DeviceResponse>(
+        {
+          url: '/api/1.0/devices/all/',
+          params: {
+            limit: limit,
+            offset: offset,
+            blankasnull: 'yes',
+          },
         },
-      });
+        logger,
+      );
 
       for (const v of response.data.Devices) {
         await iteratee(v);
@@ -85,6 +92,7 @@ export class APIClient {
 
   private async makeRequest<T>(
     opts: Pick<GaxiosOptions, 'url' | 'params' | 'method' | 'body'>,
+    logger?: IntegrationLogger,
   ) {
     const auth = Buffer.from(
       `${this.config.device42Username}:${this.config.password}`,
@@ -101,7 +109,13 @@ export class APIClient {
           retry: 3,
           retryDelay: 3000,
           noResponseRetries: 5, //ETIMEDOUT, ENOTFOUND, ECONNRESET
+          onRetryAttempt: (err) => {
+            if (logger) {
+              logger.info({ err }, 'Retrying request');
+            }
+          },
         },
+        retry: true,
         method: opts.method,
         body: opts.body,
       });
