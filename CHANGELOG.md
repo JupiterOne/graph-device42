@@ -1,3 +1,20 @@
+# v1.1.3 (Thu Jan 04 2024)
+
+#### 🐛 Bug Fix
+
+- Int 9963 lower device limit [#22](https://github.com/JupiterOne/graph-device42/pull/22) (gonzaloavalosribas@Gonzalos-MacBook-Pro.local)
+
+#### ⚠️ Pushed to `main`
+
+- Apply remove-codeql with multi-gitter [ci skip] ([@electricgull](https://github.com/electricgull))
+
+#### Authors: 2
+
+- Cameron Griffin ([@electricgull](https://github.com/electricgull))
+- Gonzalo Avalos Ribas ([@Gonzalo-Avalos-Ribas](https://github.com/Gonzalo-Avalos-Ribas))
+
+---
+
 # v1.1.3 (Wed Dec 13 2023)
 
 #### 🐛 Bug Fix
