@@ -1,3 +1,15 @@
+# v1.1.5 (Thu Jan 04 2024)
+
+#### 🐛 Bug Fix
+
+- Added integration deployment [#23](https://github.com/JupiterOne/graph-device42/pull/23) (gonzaloavalosribas@Gonzalos-MacBook-Pro.local)
+
+#### Authors: 1
+
+- Gonzalo Avalos Ribas ([@Gonzalo-Avalos-Ribas](https://github.com/Gonzalo-Avalos-Ribas))
+
+---
+
 # v1.1.3 (Thu Jan 04 2024)
 
 #### 🐛 Bug Fix
