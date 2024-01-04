@@ -66,7 +66,7 @@ export class APIClient {
     iteratee: ResourceIteratee<Device42Device>,
     logger: IntegrationLogger,
   ) {
-    const limit = 1000;
+    const limit = 25;
     let total = 0;
     let offset = 0;
     do {

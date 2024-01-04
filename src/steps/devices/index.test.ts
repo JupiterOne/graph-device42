@@ -5,7 +5,7 @@ import { Steps } from '../constants';
 import { omit } from 'lodash';
 
 // pagination takes some time for this test
-jest.setTimeout(100_000);
+jest.setTimeout(1_000_000);
 // See test/README.md for details
 let recording: Recording;
 afterEach(async () => {
