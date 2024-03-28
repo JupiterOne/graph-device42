@@ -46,7 +46,7 @@ export function createDeviceEntity(device: Device42Device) {
         hostname: null,
         switch: device.is_it_switch === 'yes',
         customer: device.customer || undefined,
-        lastSeenOn
+        lastSeenOn,
       },
     },
   });
