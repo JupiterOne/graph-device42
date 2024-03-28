@@ -1,3 +1,7 @@
+# v1.2.0 (Thu Mar 28 2024)
+
+- Added new raw data property for 'customer' to entity properties for device42_device
+
 # v1.1.5 (Thu Jan 04 2024)
 
 #### 🐛 Bug Fix
