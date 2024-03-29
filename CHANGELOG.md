@@ -1,3 +1,20 @@
+# v1.2.0 (Fri Mar 29 2024)
+
+#### 🚀 Enhancement
+
+- Release 1.2.0 [#25](https://github.com/JupiterOne/graph-device42/pull/25) ([@VDubber](https://github.com/VDubber))
+
+#### 🐛 Bug Fix
+
+- added raw data field to properties [#24](https://github.com/JupiterOne/graph-device42/pull/24) ([@SeaBlooms](https://github.com/SeaBlooms))
+
+#### Authors: 2
+
+- Colin Blumer ([@SeaBlooms](https://github.com/SeaBlooms))
+- Samuel Poulton ([@VDubber](https://github.com/VDubber))
+
+---
+
 # v1.2.0 (Thu Mar 28 2024)
 
 - Added new raw data property for 'customer' to entity properties for device42_device
