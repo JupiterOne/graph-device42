@@ -1,3 +1,15 @@
+# v1.2.1 (Thu Apr 25 2024)
+
+#### 🐛 Bug Fix
+
+- Update Dockerfile [#26](https://github.com/JupiterOne/graph-device42/pull/26) ([@zemberdotnet](https://github.com/zemberdotnet))
+
+#### Authors: 1
+
+- Matthew Zember ([@zemberdotnet](https://github.com/zemberdotnet))
+
+---
+
 # v1.2.0 (Fri Mar 29 2024)
 
 #### 🚀 Enhancement
